@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 context('Window', () => {
 
   it('Open Woolworths URL', () => {
@@ -12,22 +10,26 @@ context('Window', () => {
 
   it('enter username and password', () =>{
 
+    //enter all the credentials
     cy.get('input[name="Email"]').type('sanjanakr@mailinator.com')
     cy.get('input[name="Password"]').type('qwert123')
     cy.get('button[type="submit"]').type('{enter}')
 
   })
 
-  it('add watermelon to the cart', () => {
+  it('add watermelon to the cart', () =>{
 
-      cy.get('#headerSearch').type('watermelon')
-      cy.get('i[class="iconAct-Search search-button-icon"]').click()
-      cy.wait(2000)
-      cy.get('a[class="shelfProductTile-descriptionLink"]').first().click()
-      cy.wait(2000)
-      cy.get('span[class="cartControls-addCart"]').click()
-      cy.wait(2000)
-      cy.get('a[class="headerCheckout-cartButton headerCheckout-cartButtonHover guestOpenCart"]').click()
-
+    //search for fruit and veg
+    cy.get('#headerSearch').type('fruit and veg')
+    cy.get('i[class="iconAct-Search search-button-icon"]').click()
+    cy.wait(2000)
+    cy.get('a[class="paging-pageNumber ng-star-inserted"]').first().click()
+    cy.wait(2000)
+    cy.get('a[class="shelfProductTile-descriptionLink"]').eq(20).click()
+    cy.wait(2000)
+    cy.get('span[class="cartControls-addCart"]').click()
+    cy.wait(2000)
+    cy.get('a[class="headerCheckout-cartButton headerCheckout-cartButtonHover guestOpenCart"]').click()
   })
+
 })
